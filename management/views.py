@@ -110,7 +110,7 @@ class Register(ViewSet):
                     user.save(update_fields=['is_verified'])
                     OTP.objects.filter(otp_user=otp_obj.otp_user).delete()
 
-                return Response(data={f'{serializer.data['otp_user']}': 'user verified'},
+                return Response(data={f"{serializer.data['otp_user']}': 'user verified"},
                                 status=status.HTTP_200_OK)
 
         return Response(serializer.errors,
@@ -149,7 +149,7 @@ class Register(ViewSet):
                 untill = timedelta(seconds=60) + previous_code.otp_created
                 time_difference = current - untill
                 time_difference = floor(time_difference.total_seconds())
-                return Response({f'Try again after {time_difference} seconds'},
+                return Response({f"Try again after {time_difference} seconds"},
                                 status=status.HTTP_400_BAD_REQUEST)
 
             if previous_code:
