@@ -23,6 +23,17 @@ user_type = (
 
 
 class Authentication(AbstractUser):
+    groups = models.ManyToManyField(
+        Group,
+        related_name='custom_authentication_set',  # Change this
+        blank=True
+    )
+    user_permissions = models.ManyToManyField(
+        Permission,
+        related_name='custom_authentication_permissions_set',  # Change this
+        blank=True
+    )
+
     username = models.CharField(unique=True, max_length=255)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     age = models.IntegerField(default=1, null=True)
