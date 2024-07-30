@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<!-- Mirrored from azimjon.com/blog/yuguring/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Feb 2024 22:39:38 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>{{ post.title }}</title>
+    <meta name="author" content="Azimjon Pulatov">
+    <meta property="og:site_name" content="Azimjon's Blog"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:description"
+          content="Yuguring! Ibn Sino aytganlaridek:Turgan odam o’tirgisi, o’tirgan odam yotgisi, yotgan odam esa uxlagisi keladi.Sog’lig’iga e’tibor bermagan">
+    <link href="{% static 'assets/css/flexgridcombo.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="../../static/assets/css/style67d9.css?version=2" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'assets/favicon.html' %}">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<header class="header--title flex align-items-center">
+    <div class="container">
+        <div class="align-items-center flex">
+            <div class="logo-wrapper">
+                <a class="logo" href="/">Ozodbek's Blog</a>
+            </div>
+            <ul class="nav align-items-center">
+
+                <li><a class="list-item" href="/blog/">Blog</a></li>
+
+            </ul>
+            <div class="burger-menu">
+                <div class="bar bar--top"></div>
+                <div class="bar bar--middle"></div>
+                <div class="bar bar--bottom"></div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="progress-bar">
+    <div class="bar"></div>
+</div>
+<section class="flex align-items-center">
+    <div class="container">
+        <div class="row article-wrapper justify-center align-top">
+            {% for post in page_obj %}
+                <div class="article-header col-md-8">
+                    <h1 class="title">{{ post.title }}</h1>
+                    <div class="date">
+                        <span>{{ post.date_posted }}</span>
+                    </div>
+                </div>
+
+                <article class="content col-md-8 col-12">
+                    <h1>Yuguring!&nbsp;<br></h1>
+                    <address style="display: none"><br></address>
+                    <p>{{ post.content }}</p>
+                    <figure>
+                        <div class="figure_wrapper">
+                            <img src="{{ post.image.url }}" alt="Image description">
+                        </div>
+                        <figcaption></figcaption>
+                    </figure>
+                </article>
+            {% endfor %}
+
+
+
+            <div class="comment-post py-5">
+                <!--                            <h3 class="mb-5">0 Comments</h3>-->
+                <ul class="comment-list">
+                    {% for comment in comments %}
+                        <li class="comment">
+
+                        <div class="vcard bio">
+                            <img src="/media/image.jpg" alt="">
+                        </div>
+                        <div class="comment-body">
+
+
+                        <h3>{{ comment.name }}</h3>
+                        <div class="meta">{{ comment.created_at }}</div>
+                        <p>{{ comment.message }}</p>
+                    {% endfor %}
+                    </div>
+                    </li>
+
+                </ul>
+
+            </div>
+            <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">Leave a comment</h3>
+                <form action="" method="POST" class="p-5 comment-form">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" name='name' class="form-control" id="name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" name='email' class="form-control" id="email">
+                            </div>
+                        </div>
+                        <!--                                    <div class="col-md-12">-->
+                        <!--                                        <div class="form-group">-->
+                        <!--                                            <label for="website">Website</label>-->
+                        <!--                                            <input type="url" class="form-control" id="website">-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea name="message" id="message" cols="30" rows="10"
+                                          class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <ul class="custom-pagination col-md-8 col-12">
+                <div class="pagination-list row">
+                    <li class="col prev">
+                        {% if page_obj.has_previous %}
+                            {#                            <a href="?page=1">&laquo; First</a>#}
+                            <a href="?page={{ page_obj.previous_page_number }}" title="Previous Page">&larr;
+                                Previous</a>
+                        {% endif %}
+                    </li>
+                    <li class="col">
+                        <a href="/blog/">See More</a>
+                    </li>
+                    <li class="col next">
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}" title="Next Page">Next &rarr;</a>
+                            {#                            <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>#}
+                        {% endif %}
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <div class="row">
+            <p>
+                &copy; 2024 yusufzadeh.uz || Designed by azimjon.com
+            </p>
+        </div>
+    </div>
+</footer>
+<script src="{% static 'assets/js/ScrollMonitor.min.js' %}"></script>
+<script src="{% static 'assets/js/TweenMax.min.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+<!-- Mirrored from azimjon.com/blog/yuguring/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Feb 2024 22:39:38 GMT -->
+</html>

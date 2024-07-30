@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>Ozodbek's Blog</title>
+    <meta name="author" content="Ozodbek Yusupov">
+    <meta property="og:site_name" content="Azimjon's Blog"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Picture</title>
+    <style>
+        .profile-picture {
+            width: 150px; /* Adjust as needed */
+            height: 150px; /* Ensure height matches width */
+            border-radius: 50%; /* Makes the image circular */
+            object-fit: cover; /* Ensures the image fits the circle without distortion */
+            border: 2px solid #ddd; /* Optional: Adds a border around the image */
+        }
+    </style>
+    <meta name="description"
+          content="I am Azimjon Pulatov, a 21-year-old Software Engineer from Tashkent, Uzbekistan, currently living in Warsaw, Poland.">
+{#    <meta name="og:image" content="static/assets/images/azimjon.jpg">#}
+    <link href="static/assets/css/flexgridcombo.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="static/assets/css/style67d9.css?version=2" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="static/assets/favicon.html">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<header class="header--title flex align-items-center">
+    <div class="container">
+        <div class="align-items-center flex">
+            <div class="logo-wrapper">
+                <a class="logo" href="">Ozodbek's Blog</a>
+            </div>
+            <ul class="nav align-items-center">
+                <!--                <li><a class="list-item" href="https://42.uz/">42</a></li>-->
+                <li><a class="list-item" href="blog/">Blog</a></li>
+                <!--                <li><a class="list-item" href="talks/index.html">Talks</a></li>-->
+                <!--                <li><a class="list-item" href="https://t.me/s/lazyprogrammer" target="_blank">Channel</a></li>-->
+            </ul>
+            <div class="burger-menu">
+                <div class="bar bar--top"></div>
+                <div class="bar bar--middle"></div>
+                <div class="bar bar--bottom"></div>
+            </div>
+        </div>
+    </div>
+</header>
+<section id="home" class="flex align-items-center">
+    <div class="container">
+        <div class="row justify-between">
+            <div class="col-xl-8 col-lg-10 col-12 stagger-animation">
+                <div class="about flex align-items-center">
+                    <img class="anim-item profile-picture
+                                align-self-start" src="{{ home_info.profile_picture.url }}" alt="Avatar"/>
+                    <div class="about-detail anim-item">
+                        <h1 class="title">{{ home_info.full_name }}</h1>
+                        <h3 class="desc">{{ home_info.role }}</h3>
+                        <div class="social-links flex
+                                    align-items-center">
+                            <!--                            <a class="icon-youtube" target="_blank" href="https://www.youtube.com/azimjonpulatov">-->
+                            <!--                                <img src="static/assets/images/icons/youtube.svg" width="26"/>-->
+                            <!--                            </a>-->
+                            <a class="icon-github" target="_blank" href="{{ home_info.github_link }}"></a>
+                            <a class="icon-linkedin" target="_blank"
+                               href="{{ home_info.linkedin_link }}">
+                                <img src="{% static 'assets/images/icons/linkedin.svg' %}" width="22"/>
+                            </a>
+                            <a class="icon-instagram" target="_blank" href="{{ home_info.ig_link }}">
+                                <img src="{% static 'assets/images/icons/instagram.svg' %}" width="22"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail">
+                    <p class="size-big anim-item">{{ home_info.little_description }}</p>
+                    <div class="btns-wrapper anim-item">
+                        <a href="blog/" class="btn btn-primary">Read Blog</a>
+                        <a href="about/" class="btn btn-secondary">About Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <div class="row">
+            <p>
+                &copy; 2024 yusufzadeh.uz || Designed by azimjon.com
+            </p>
+        </div>
+    </div>
+</footer>
+<script src="static/assets/js/ScrollMonitor.min.js"></script>
+<script src="static/assets/js/TweenMax.min.js"></script>
+<script src="static/assets/js/main.js"></script>
+</body>
+
+<!-- Mirrored from azimjon.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Feb 2024 22:38:42 GMT -->
+</html>
