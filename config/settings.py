@@ -15,7 +15,8 @@ dotenv_file = os.path.join(BASE_DIR, '.env')
 if os.path.isfile(dotenv_file):
     load_dotenv(dotenv_file)
 
-SECRET_KEY = config('SECRET_KEY')
+#SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'django-insecure-z0d!h8l5nvgsu7k7xzp%+x6ic4hn9q^m(u(takct7re%5%w-sz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
