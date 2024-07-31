@@ -2,7 +2,9 @@ from datetime import datetime
 
 from django.contrib.auth.models import User
 from django.db import models
+
 from management.models import Authentication
+
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -60,3 +62,8 @@ class HomeViewInfo(models.Model):
     ig_link = models.URLField(default='https://www.instagram.com/o.tulkinovich/')
     github_link = models.URLField(default='https://github.com/13ozodbek')
     linkedin_link = models.URLField(default='https://www.linkedin.com/in/ozodbek-yusupov-021919317/')
+
+    def save(self, *args, **kwargs):
+        if not self.pk and HomeViewInfo.objects.exists():
+            return 'Only one instance can be create'
+        return super(HomeViewInfo, self).save(*args, **kwargs)
