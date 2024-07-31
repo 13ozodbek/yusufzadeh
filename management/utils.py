@@ -2,9 +2,10 @@ import datetime
 import random
 
 import requests
+from decouple import config
 from django.utils import timezone
 
-BOT_ID = "6725176067:AAFYwaMgrBHuvq8V-iwzLOLNRjIVH1UYIBU"
+BOT_ID = config('BOT_ID')
 CHAT_ID = '584066666'  # "-1001853506087"#Ozodbekniki    #2081729348 guruhniki
 TELEGRAMBOT_URL = "https://api.telegram.org/bot{}/sendMessage?text={}&chat_id={}"
 
