@@ -47,6 +47,12 @@ class AboutMe(models.Model):
                                   blank=True)
     image = models.ImageField(upload_to="images/")
 
+    def save(self, *args, **kwargs):
+        if not self.pk and AboutMe.objects.exists():
+            return 'Only one instance can be create'
+        return super(AboutMe, self).save(*args, **kwargs)
+
+
 
 class HomeViewInfo(models.Model):
     profile_picture = models.ImageField(upload_to="images/")
