@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="../static/assets/css/style67d9.css?version=2" rel="stylesheet">
     <link rel="shortcut icon" type="image/jpg" href="../static/assets/favicon.html">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="google-adsense-account" content="ca-pub-1685688066609372">
+    {#    <meta name="msapplication-TileColor" content="#da532c">#}
+    {#    <meta name="theme-color" content="#ffffff">#}
+    {#    <meta name="google-adsense-account" content="ca-pub-1685688066609372">#}
 </head>
 <body>
 <header class="header--title flex align-items-center">
@@ -25,10 +25,11 @@
                 <a class="logo" href="/">Ozodbek's Blog</a>
             </div>
             <ul class="nav align-items-center">
-<!--                <li><a class="list-item" href="https://42.uz/">42</a></li>-->
+                <!--                <li><a class="list-item" href="https://42.uz/">42</a></li>-->
                 <li><a class="list-item" href="/blog/">Blog</a></li>
-<!--                <li><a class="list-item" href="../talks/index.html">Talks</a></li>-->
-<!--                <li><a class="list-item" href="https://t.me/s/lazyprogrammer" target="_blank">Channel</a></li>-->
+                <li><a class="list-item" href="../contact/">Contact</a></li>
+                <!--                <li><a class="list-item" href="../talks/index.html">Talks</a></li>-->
+                <!--                <li><a class="list-item" href="https://t.me/s/lazyprogrammer" target="_blank">Channel</a></li>-->
             </ul>
             <div class="burger-menu">
                 <div class="bar bar--top"></div>
@@ -51,29 +52,29 @@
             <div id="archive" class="col-md-7">
 
                 <h4 class="sticky">2024</h4>
-<!--                <h4>December</h4>-->
+                <!--                <h4>December</h4>-->
                 <ul class="list-wrapper">
                     {% for post in posts %}
-                    <li>
-                        <a class="list-item" href="/blog_post/{{ post.id }}/">
-                            <div class="date">{{post.date_posted}}</div>
-                            <div class="title">{{post.title}}</div>
-                        </a>
-                    </li>
+                        <li>
+                            <a class="list-item" href="/blog_post/{{ post.id }}/">
+                                <div class="date">{{ post.date_posted }}</div>
+                                <div class="title">{{ post.title }}</div>
+                            </a>
+                        </li>
                     {% endfor %}
 
                 </ul>
 
 
             </div>
-<!--            <div class="subscribe-form  col-md-4 sticky " id="mc-embedded-subscribe-form"-->
-<!--                 name="mc-embedded-subscribe-form">-->
-<!--                <h6>Obuna Bo'ling</h6>-->
-<!--                <p>-->
-<!--                    Yangi maqola, maruza va darslarimni <a href="https://t.me/lazyprogrammer">@lazyprogrammer</a>-->
-<!--                    telegram kanalimda topishingiz mumkin.-->
-<!--                </p>-->
-<!--            </div>-->
+            <!--            <div class="subscribe-form  col-md-4 sticky " id="mc-embedded-subscribe-form"-->
+            <!--                 name="mc-embedded-subscribe-form">-->
+            <!--                <h6>Obuna Bo'ling</h6>-->
+            <!--                <p>-->
+            <!--                    Yangi maqola, maruza va darslarimni <a href="https://t.me/lazyprogrammer">@lazyprogrammer</a>-->
+            <!--                    telegram kanalimda topishingiz mumkin.-->
+            <!--                </p>-->
+            <!--            </div>-->
         </div>
     </div>
 </section>

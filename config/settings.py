@@ -1,25 +1,15 @@
 import os
 from pathlib import Path
 
-#from decouple import config
-#from dotenv import load_dotenv
+# from google.cloud import secretmanager
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
+# GOOGLE_APPLICATION_CREDENTIALS = 'config/eighth-bebop-428819-n1-e848d0196049.json'
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# dotenv_file = os.path.join(BASE_DIR, '.env')
-# if os.path.isfile(dotenv_file):
-#     load_dotenv(dotenv_file)
-
-#SECRET_KEY = config('SECRET_KEY')
 SECRET_KEY = 'django-insecure-z0d!h8l5nvgsu7k7xzp%+x6ic4hn9q^m(u(takct7re%5%w-sz'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*', '34.159.93.129', 'localhost', '127.0.0.1']
 
@@ -126,3 +116,13 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR / 'static')
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
+#
+# def get_secret(secret_name, project_id):
+#     client = secretmanager.SecretManagerServiceClient()
+#     secret_path = client.secret_path(project_id, secret_name)
+#     response = client.access_secret_version(name=secret_path)
+#     return response.payload.data.decode('UTF-8')
+#
+# DATABASE_PASSWORD = get_secret('KurulusOsman7.', 'your-project-id')

@@ -73,3 +73,13 @@ class HomeViewInfo(models.Model):
         if not self.pk and HomeViewInfo.objects.exists():
             return 'Only one instance can be create'
         return super(HomeViewInfo, self).save(*args, **kwargs)
+
+
+class Contact(models.Model):
+    name = models.TextField()
+    email = models.EmailField()
+    message = models.TextField()
+    phone = models.TextField()
+
+    def __str__(self):
+        return (f'{self.name} :: {self.phone}')

@@ -9,7 +9,8 @@ from home.models import (Post,
                          Comment,
                          UserProfile,
                          AboutMe,
-                         HomeViewInfo)
+                         HomeViewInfo,
+                         Contact)
 from .serializers import CommentSerializer
 
 
@@ -90,4 +91,16 @@ def comments(request, pk):
     return render(request,
                   'blog.html',
                   'Comment saved',
+                  status=status.HTTP_200_OK)
+
+def contact(request):
+    if request.method == 'POST':
+        contact = Contact.objects.create(name=request.POST['name'],
+                                         message=request.POST['message'],
+                                         email=request.POST['email'],
+                                         phone=request.POST['phone'],)
+        contact.save()
+
+    return render(request,
+                  'contact.html',
                   status=status.HTTP_200_OK)

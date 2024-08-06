@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from .views import home, about, blog, blog_post, comments
+from .views import home, about, blog, blog_post, comments, contact
 
 urlpatterns = [
     path('', home),
@@ -9,6 +9,7 @@ urlpatterns = [
     path('blog/', blog),
     path('blog_post/<int:pk>/', blog_post),
     path('comments/<int:pk>/', comments),
+    path('contact/', contact),
 
 
 ]
