@@ -12,7 +12,7 @@ from home.models import (Post,
                          HomeViewInfo,
                          Contact)
 from .serializers import CommentSerializer
-
+from .utils import send_message
 
 def home(request):
     home_info = HomeViewInfo.objects.all().first()
@@ -100,7 +100,7 @@ def contact(request):
                                          email=request.POST['email'],
                                          phone=request.POST['phone'],)
         contact.save()
-
+        send_message(contact)
     return render(request,
                   'contact.html',
                   status=status.HTTP_200_OK)
