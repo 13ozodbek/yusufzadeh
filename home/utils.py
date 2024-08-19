@@ -2,7 +2,7 @@ import requests
 from django.utils import timezone
 CHAT_ID = '584066666'
 TELEGRAMBOT_URL = "https://api.telegram.org/bot{}/sendMessage?text={}&chat_id={}"
-BOT_ID = "6725176067:AAFYwaMgrBHuvq8V-iwzLOLNRjIVH1UYIBU"
+BOT_ID = "7543378625:AAEOaVAQRyBItEtUFZ8198DxovyS_eEnEeU"
 
 def send_message(message):
     message = (f'Name: {message.name}\n'
