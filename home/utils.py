@@ -12,7 +12,7 @@ def send_message(message):
                '\n'
                f'message: {message.message}'
                '\n'
-               f'date: {message.created_at}'
+               f'date: {message.created_at.strftime("%d/%m/%Y %H:%M:%S")}'
 
                )
     response = requests.get(TELEGRAMBOT_URL.format(BOT_ID, message, CHAT_ID))
