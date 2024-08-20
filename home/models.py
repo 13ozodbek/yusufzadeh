@@ -82,7 +82,7 @@ class Contact(models.Model):
     phone = models.TextField()
 
 
-    created_at = models.DateTimeField(default=datetime.now())
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return (f'{self.name} :: {self.phone}')
