@@ -81,5 +81,8 @@ class Contact(models.Model):
     message = models.TextField()
     phone = models.TextField()
 
+
+    created_at = models.DateTimeField(default=datetime.now())
+
     def __str__(self):
         return (f'{self.name} :: {self.phone}')
