@@ -14,6 +14,7 @@ from home.models import (Post,
 from .serializers import CommentSerializer
 from .utils import send_message
 
+
 def home(request):
     home_info = HomeViewInfo.objects.all().first()
     return render(request,
@@ -93,12 +94,13 @@ def comments(request, pk):
                   'Comment saved',
                   status=status.HTTP_200_OK)
 
+
 def contact(request):
     if request.method == 'POST':
-        contact = Contact.objects.create(name=request.POST['name'],
-                                         message=request.POST['message'],
-                                         email=request.POST['email'],
-                                         phone=request.POST['phone'],)
+        contact = Contact.objects.create(name=request.get['name'],
+                                         message=request.get['message'],
+                                         email=request.get['email'],
+                                         phone=request.get['phone'], )
         contact.save()
         send_message(contact)
     return render(request,
