@@ -5,6 +5,7 @@ import jwt
 from django.contrib.auth import login
 from django.contrib.auth.hashers import (make_password,
                                          check_password)
+from django.shortcuts import render
 from django.utils import timezone
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework import status
@@ -63,8 +64,10 @@ class Register(ViewSet):
                                      otp_code=generate_random_number())
             otp.save()
             send_otp_code(otp)
-            return Response(serializer.data,
-                            status=status.HTTP_201_CREATED)
+            return render(request,
+                          template_name='signup.html',
+                          context=serializer.validated_data,
+                          status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors,
                         status=status.HTTP_400_BAD_REQUEST)
@@ -290,11 +293,12 @@ class Login(ViewSet):
 
             login(request, user)
 
-            return Response({'message': 'login successful',
-                             'access': f'{token}',
-                             'refresh': f'{refresh_token}'},
-
-                            status=status.HTTP_200_OK)
+            # return Response({'message': 'login successful',
+            #                  'access': f'{token}',
+            #                  'refresh': f'{refresh_token}'},
+            #
+            #                 status=status.HTTP_200_OK)
+            return render(request, 'signin.html')
 
         return Response(serializer.errors,
                         status=status.HTTP_400_BAD_REQUEST)
@@ -331,76 +335,6 @@ class UserInfoView(ViewSet):
         return Response(serializer.errors,
                         status=status.HTTP_400_BAD_REQUEST)
 
-# class UserOperations(ViewSet):
-#     @swagger_auto_schema(
-#         operation_description="Operations on users",
-#         operation_summary="Return all users",
-#         responses={200: 'Operation is completed'},
-#         request_body=AuthMeSerializer,
-#         tags=['get']
-#     )
-#     def get_users(self, request):
-#         serializer = AuthMeSerializer(data=request.data)
-#         if serializer.is_valid(raise_exception=True):
-#             token_uuid = serializer.validated_data['token']
-#             check_data = {"token": f"{token_uuid}"}
-#             check_authentication = requests.post('http://134.122.76.27:8114/api/v1/check/',
-#                                                  json=check_data)
-#
-#             if not check_authentication.status_code == 200:
-#                 return Response({'error': 'Unidentified API'},
-#                                 status=status.HTTP_400_BAD_REQUEST)
-#
-#             users = Authentication.objects.all()
-#             return Response(UserSerializer(users, many=True).data,
-#                             status=status.HTTP_200_OK)
-#
-#     @swagger_auto_schema(
-#         operation_description="Operations on users",
-#         operation_summary="return user info",
-#         responses={200: 'Operation is completed'},
-#         request_body=AuthMeSerializer,
-#         tags=['get']
-#     )
-#     def get_user_by_id(self, request, pk):
-#
-#         token_uuid = request.data['token']
-#         check_data = {"token": f"{token_uuid}"}
-#         check_authentication = requests.post('http://134.122.76.27:8114/api/v1/check/',
-#                                              json=check_data)
-#         if not check_authentication.status_code == 200:
-#             return Response({'error': 'Unidentified API'},
-#                             status=status.HTTP_400_BAD_REQUEST)
-#
-#         user = Authentication.objects.filter(id=pk).first()
-#         if not user:
-#             return Response({'error': 'User does not exist'},
-#                             status=status.HTTP_400_BAD_REQUEST)
-#         serializer = UserSerializer(user)
-#         return Response(serializer.data,
-#                         status=status.HTTP_200_OK)
-#
-#     @swagger_auto_schema(
-#         operation_description="Operations on users",
-#         operation_summary="delete user",
-#         responses={200: 'Operation is completed'},
-#         request_body=AuthMeSerializer
-#     )
-#     def delete_user_by_id(self, request, pk):
-#
-#         token_uuid = request.data['token']
-#         check_data = {"token": f"{token_uuid}"}
-#         check_authentication = requests.post('http://134.122.76.27:8114/api/v1/check/',
-#                                              json=check_data)
-#         if not check_authentication.status_code == 200:
-#             return Response({'error': 'Unidentified API'},
-#                             status=status.HTTP_400_BAD_REQUEST)
-#         user = Authentication.objects.filter(id=pk).first()
-#         if not user:
-#             return Response({'error': 'User does not exist'},
-#                             status=status.HTTP_400_BAD_REQUEST)
-#         if user.id ==1:
-#             return Response({"RESTRICTED': 'FIRST USER CAN'T BE DELETED"},
-#                             status=status.HTTP_403_FORBIDDEN)
-#         user.delete()
-#         return Response(status=status.HTTP_200_OK)
+
+def sign_up(request):
+    return render(request, 'signin.html')
